@@ -34,6 +34,7 @@ class PrimaryButton extends StatelessWidget {
               text,
               style: Theme.of(context).typography.black.displaySmall!.copyWith(
                     color: Colors.white,
+                    fontSize: 16,
                   ),
             )
           ],
