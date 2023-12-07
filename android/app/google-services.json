@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571030665969",
+    "project_id": "yodacentral-7a968",
+    "storage_bucket": "yodacentral-7a968.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571030665969:android:60f0c30c81068fb49b8750",
+        "android_client_info": {
+          "package_name": "com.example.yodacentral_sona"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC23Mw9k7M4RnCzXS2lzIhsVbWZlom7_NQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
