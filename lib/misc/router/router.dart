@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yodacentral_sona/feature/financing_lead/registration_number_page.dart';
+import 'package:yodacentral_sona/feature/financing_lead/specification_page.dart';
 import 'package:yodacentral_sona/feature/home/home_page.dart';
 import 'package:yodacentral_sona/misc/utils/router_constant.dart';
 
@@ -22,6 +23,14 @@ class MainRouter {
         pageBuilder: (context, state) => MaterialPage(
           key: state.pageKey,
           child: const RegistrationNumberPage(),
+        ),
+      ),
+      GoRoute(
+        path: specificationRouteName,
+        name: specificationRouteName,
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const SpecificationPage(),
         ),
       ),
     ],

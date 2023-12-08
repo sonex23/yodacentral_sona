@@ -5,10 +5,12 @@ class PrimaryButton extends StatelessWidget {
   final Widget? icon;
   final String text;
   final VoidCallback onTap;
+  final bool? filled;
   const PrimaryButton(
     this.text, {
     this.icon,
     required this.onTap,
+    this.filled = true,
     super.key,
   });
 
@@ -21,7 +23,13 @@ class PrimaryButton extends StatelessWidget {
           horizontal: 16,
           vertical: 10,
         ),
-        decoration: BoxDecoration(color: Palette.primary600, borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(
+          color: filled ?? false ? Palette.primary600 : Colors.transparent,
+          border: Border.all(
+            color: filled ?? false ? Colors.transparent : Palette.gray300,
+          ),
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Row(
           mainAxisSize: icon == null ? MainAxisSize.max : MainAxisSize.min,
           mainAxisAlignment: icon != null ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
@@ -33,7 +41,7 @@ class PrimaryButton extends StatelessWidget {
             Text(
               text,
               style: Theme.of(context).typography.black.displaySmall!.copyWith(
-                    color: Colors.white,
+                    color: filled ?? false ? Colors.white : Palette.gray700,
                     fontSize: 16,
                   ),
             )

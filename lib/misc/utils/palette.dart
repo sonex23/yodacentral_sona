@@ -9,4 +9,5 @@ class Palette {
   static const gray500 = Color(0xff667085);
   static const gray700 = Color(0xff344054);
   static const gray900 = Color(0xff101828);
+  static const error600 = Color(0xffD92D20);
 }
