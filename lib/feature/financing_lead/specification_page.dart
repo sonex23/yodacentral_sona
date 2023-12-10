@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yodacentral_sona/misc/utils/palette.dart';
 import 'package:yodacentral_sona/widget/back_page_button.dart';
 import 'package:yodacentral_sona/widget/custom_timeline.dart';
+import 'package:yodacentral_sona/widget/input_currency.dart';
 import 'package:yodacentral_sona/widget/input_dropdown_bottomsheet.dart';
 
 class SpecificationPage extends StatefulWidget {
@@ -32,6 +33,11 @@ class _SpecificationPageState extends State<SpecificationPage> {
   final TextEditingController _transmissionErrorController = TextEditingController();
   final TextEditingController _exteriorTextController = TextEditingController();
   final TextEditingController _exteriorErrorController = TextEditingController();
+  final TextEditingController _priceTextController = TextEditingController();
+  final TextEditingController _priceErrorController = TextEditingController();
+  final TextEditingController _notesTextController = TextEditingController();
+
+  int _counterNotes = 300;
 
   void showInputBottomSheet(
     List<String> listValue,
@@ -159,6 +165,7 @@ class _SpecificationPageState extends State<SpecificationPage> {
                 Form(
                   key: _formKey,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       InputDropdownBottomSheet(
                         title: 'Condition*',
@@ -316,6 +323,83 @@ class _SpecificationPageState extends State<SpecificationPage> {
                             errorController: _exteriorErrorController,
                           );
                         },
+                      ),
+                      InputCurrency(
+                        title: 'Price*',
+                        textController: _priceTextController,
+                        errorController: _priceErrorController,
+                      ),
+                      Text(
+                        'Notes',
+                        style: Theme.of(context).typography.black.displaySmall!.copyWith(
+                              color: Palette.gray700,
+                            ),
+                      ),
+                      Text(
+                        'Write a short additional informations.',
+                        style: Theme.of(context).typography.black.displaySmall!.copyWith(
+                              color: Palette.gray500,
+                              fontWeight: FontWeight.w400,
+                            ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        controller: _notesTextController,
+                        maxLength: 300,
+                        minLines: 5,
+                        maxLines: 5,
+                        cursorColor: Palette.primary600,
+                        style: Theme.of(context).typography.black.displaySmall!.copyWith(
+                              fontSize: 16,
+                            ),
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 10,
+                          ),
+                          counterText: '',
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                              color: Palette.primary600,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                              color: Palette.gray300,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 190, 13, 0),
+                            ),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 190, 13, 0),
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            _counterNotes = 300 - value.length;
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        '${_counterNotes} characters left',
+                        style: Theme.of(context).typography.black.displaySmall!.copyWith(
+                              color: Palette.gray500,
+                              fontWeight: FontWeight.w400,
+                            ),
                       ),
                       const CustomTimeline(progress: 2),
                     ],

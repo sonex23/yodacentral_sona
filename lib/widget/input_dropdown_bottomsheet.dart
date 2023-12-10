@@ -72,20 +72,22 @@ class _InputDropdownBottomSheetState extends State<InputDropdownBottomSheet> {
             widget.onTap?.call();
           },
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 14,
-            left: 16,
-          ),
-          child: widget.errorMessage != null
-              ? Text(
+        widget.errorMessage?.isNotEmpty ?? false
+            ? Padding(
+                padding: const EdgeInsets.only(
+                  top: 14,
+                  left: 16,
+                ),
+                child: Text(
                   widget.errorMessage!,
                   style: Theme.of(context).typography.black.displaySmall!.copyWith(
                         color: Palette.error600,
                       ),
-                )
-              : const SizedBox.shrink(),
-        ),
+                ),
+              )
+            : const SizedBox(
+                height: 16,
+              ),
       ],
     );
   }
